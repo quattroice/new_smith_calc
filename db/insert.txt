@@ -1,0 +1,12 @@
+ITEMLIST data format
+ID,NAME,JOB_TYPE,MATERIAL_TYPE,{MIN1,MAX1}*8
+
+JOB_TYPE:
+	道具鍛冶3
+	防具鍛冶2
+	武器鍛冶1
+
+MATERIAL_TYPE:
+	通常再生集中変化0
+	倍半1
+	威力変化2
