@@ -3,6 +3,7 @@ import tkinter.ttk as ttk
 import sqlite3 as sql
 import math
 import sys
+import os
 
 class Tempature_table(tk.Frame):
 	def __init__(self,master,**kwargs):
@@ -28,12 +29,14 @@ class Tempature_table(tk.Frame):
 		self.iid2 = self.current_tempature_table.insert(parent="",index="end",values=self.get_value_fromdb(tmp=0))
 
 	def get_value_fromdb(self,tp="",tmp=1000,focus=1.0):
+		# データベースへ接続
 		dbname = "../db/tempature.db"
+		db_path = os.path.join(os.path.dirname(__file__), '..', 'db', dbname)
+		conn = sql.connect(db_path)
+		cur = conn.cursor()
 		if tp == "":
 			tp = str(tmp)
 		top = (tp,)
-		conn = sql.connect(dbname)
-		cur  = conn.cursor()
 		cur.execute("select V1,V2,V3,V4,V5,V6,V7 from TEMPATURE where TMP = {}".format(tmp))
 		res_from_table = cur.fetchone()
 		smith_damage = tuple(math.floor(focus * num)for num in res_from_table)

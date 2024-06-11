@@ -3,12 +3,14 @@ import tkinter.ttk as ttk
 import sqlite3 as sql
 import math
 import sys
+import os
 
 class Itemlist(tk.Frame):
 	def set_itemname_list(self):
 		# データベースへ接続
 		dbname = "../db/tempature.db"
-		conn = sql.connect(dbname)
+		db_path = os.path.join(os.path.dirname(__file__), '..', 'db', dbname)
+		conn = sql.connect(db_path)
 		cur = conn.cursor()
 
 		# アイテム一覧を取得してデータベースとのアクセスを閉じる
@@ -29,7 +31,8 @@ class Itemlist(tk.Frame):
 	def get_material_type(self):
 		# データベースへ接続
 		dbname = "../db/tempature.db"
-		conn = sql.connect(dbname)
+		db_path = os.path.join(os.path.dirname(__file__), '..', 'db', dbname)
+		conn = sql.connect(db_path)
 		cur = conn.cursor()
 
 		# アイテム一覧を取得してデータベースとのアクセスを閉じる

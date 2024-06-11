@@ -3,6 +3,7 @@ import tkinter.ttk as ttk
 import sqlite3 as sql
 import math
 import sys
+import os
 
 class Material_state(tk.Frame):
     def __init__(self,master=None,**kwargs):
@@ -45,8 +46,10 @@ class Material_state(tk.Frame):
             self.entry.config(background="white")
 
     def set_num(self,number,iname):
+        # データベースへ接続
         dbname = "../db/tempature.db"
-        conn = sql.connect(dbname)
+        db_path = os.path.join(os.path.dirname(__file__), '..', 'db', dbname)
+        conn = sql.connect(db_path)
         cur = conn.cursor()
         try:
             query = f"select MIN{number}, MAX{number} from ITEMLIST where ITEMNAME = ?"
