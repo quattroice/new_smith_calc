@@ -61,5 +61,7 @@ class Tempature_table(tk.Frame):
 		# 光地金で200の倍数のみ二列目に値を挿入
 		if((mtype == 2)&(tm % 200 == 0)):
 			self.current_tempature_table.item(self.iid2,values=self.get_value_fromdb(tp="光部分",tmp=tm,focus=focus*2.0))
+		elif((mtype == 1)&(tm == 1000)):
+			self.current_tempature_table.item(self.iid2,values=self.get_value_fromdb(tp="1T目",tmp=tm,focus=1.0))
 		else:
 			self.current_tempature_table.item(self.iid2,values=self.get_value_fromdb(tmp=0,focus=0))
