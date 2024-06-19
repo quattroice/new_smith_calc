@@ -50,7 +50,7 @@ class App(tk.Tk):
 		self.reset_button.grid(row=0,column=1,padx=8,pady=4)
 
 		# 温度操作ボタンの表示
-		self.temp_button = Temp_button(self)
+		self.temp_button = Temp_button(self,relief="solid",bd=1)
 		self.temp_button.grid(row=1,column=1,padx=8,pady=4)
 
 	def set_itemname(self):

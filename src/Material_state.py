@@ -32,9 +32,7 @@ class Material_state(tk.Frame):
         self.min_damage.set(0)
         self.max_damage.set(0)
         self.delta_damage.set(0)
-        self.label_min.configure(text=self.min_damage.get())
-        self.label_max.configure(text=self.max_damage.get())
-        self.delta_label.configure(text=self.delta_damage.get())
+        self.configures()
         self.entry.configure(state="disable")
         self.entry.insert(0,self.damage.get())
 
@@ -63,10 +61,7 @@ class Material_state(tk.Frame):
                 self.min_damage.set(res_from_table[0])
                 self.max_damage.set(res_from_table[1])
                 self.delta_damage.set(self.max_damage.get() - self.get_damage())
-                self.label_min.configure(text=self.min_damage.get())
-                self.label_max.configure(text=self.max_damage.get())
-                self.delta_label.configure(text=self.delta_damage.get())
-                
+                self.configures()
                 if self.max_damage.get() != 0:
                     self.entry.configure(state="normal")
         except Exception as e:
@@ -81,3 +76,8 @@ class Material_state(tk.Frame):
         except ValueError:
             dm = 0
         return dm
+    
+    def configures(self):
+        self.label_min.configure(text=self.min_damage.get())
+        self.label_max.configure(text=self.max_damage.get())
+        self.delta_label.configure(text=self.delta_damage.get())
