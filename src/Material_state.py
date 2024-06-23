@@ -29,12 +29,8 @@ class Material_state(tk.Frame):
 
     def ms_reset(self):
         self.damage.set(0)
-        self.min_damage.set(0)
-        self.max_damage.set(0)
-        self.delta_damage.set(0)
+        self.delta_damage.set(self.max_damage.get())
         self.configures()
-        self.entry.configure(state="disable")
-        self.entry.insert(0,self.damage.get())
 
     def entry_bg(self,event):
         dm = self.get_damage()

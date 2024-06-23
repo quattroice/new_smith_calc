@@ -67,7 +67,7 @@ class App(tk.Tk):
 		self.action_list.action_name.set("叩く")
 		self.tempature_table.set_tempature_table(focus=1.0)
 		for ms in self.msl:
-			ms.damage.set(0)
+			ms.ms_reset()
 
 	def tb_pushed(self,d):
 		bef = self.tempature.get()
