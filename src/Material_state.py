@@ -31,6 +31,7 @@ class Material_state(tk.Frame):
         self.damage.set(0)
         self.delta_damage.set(self.max_damage.get())
         self.configures()
+        self.entry.config(background="white")
 
     def entry_bg(self,event):
         dm = self.get_damage()
